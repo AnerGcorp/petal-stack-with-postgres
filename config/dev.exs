@@ -2,10 +2,10 @@ import Config
 
 # Configure your database
 config :consulting, Consulting.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "user",
+  password: "userpass",
   hostname: "localhost",
-  database: "consulting_dev",
+  database: "petal_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
