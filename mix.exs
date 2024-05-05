@@ -69,13 +69,20 @@ defmodule Consulting.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"],
+      setup: [
+        "deps.get",
+        "ecto.setup",
+        "assets.setup",
+        "assets.build",
+        "cmd --cd assets npm install"
+      ],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
       "assets.build": ["tailwind consulting", "esbuild consulting"],
       "assets.deploy": [
+        "cmd --cd assets npm run deploy",
         "tailwind consulting --minify",
         "esbuild consulting --minify",
         "phx.digest"
